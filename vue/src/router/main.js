@@ -1,0 +1,86 @@
+import VueRouter from 'vue-router';
+const routes =[
+    {
+        path:'/',
+        name:'login',
+        component:()=>import('../components/Login.vue')
+    },
+    {
+        path:'/index',
+        name:'index',
+        component:()=>import('../components/IndexPage.vue'),
+        children:[
+            {
+                path:'/home',
+                name:'home',
+                component:()=>import('../components/Home.vue')
+            },{
+                path:'/PayStatus',
+                name:'PayStatus',
+                component:()=>import('../components/util/PayStatus.vue')
+            },
+            {
+                path:'/line',
+                name:'line',
+                component:()=>import('../components/Line.vue')
+            },
+            {
+                path:'/hotel',
+                name:'hotel',
+                component:()=>import('../components/Hotel.vue')
+            },
+            {
+                path:'/userControl',
+                name:'userControl',
+                component:()=>import('../components/userControl.vue')
+            },
+            {
+                path:'/UserOrder',
+                name:'UserOrder',
+                component:()=>import('../components/UserOrder.vue')
+            },
+            {
+                path:'/orderControl',
+                name:'orderControl',
+                component:()=>import('../components/orderControl.vue')
+            },
+            {
+                path:'/hotelControl',
+                name:'hotelControl',
+                component:()=>import('../components/hotelControl.vue')
+            },
+            {
+                path:'/commentControl',
+                name:'commentControl',
+                component:()=>import('../components/commentControl.vue')
+            },
+            {
+                path:'/ScenicControl',
+                name:'ScenicControl',
+                component:()=>import('../components/ScenicControl.vue')
+            },
+            {
+                path:'/LineControl',
+                name:'LineControl',
+                component:()=>import('../components/LineControl.vue')
+            },
+            {
+                path:'/userHome',
+                name:'userHome',
+                component:()=>import('../components/UserHome.vue')
+            },
+            {
+                path:'/scenic/:id',
+                name:'scenic',
+                component:()=>import('../components/scenic.vue')
+            },
+        ]
+    }
+
+]
+
+const router = new VueRouter({
+    mode:'history',
+    routes
+})
+export default router

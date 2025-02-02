@@ -1,0 +1,26 @@
+
+server:
+  port: 8090
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  mvc:
+    static-path-pattern: /**
+  datasource:
+    url: jdbc:mysql://localhost:3306/dz_travel?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 12345678
+
+# 支付宝
+alipay:
+  app-id: 9021000143680695
+  gateway: https://openapi-sandbox.dl.alipaydev.com/gateway.do
+  private-key: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDGa5GlC1nspUvf+IbuuwxxiFdiVIIibF0p/aB3XhoEQ9rog7QAegM5xGzlnzdmup0sS+3ETFbgyAEE7fD0IswOX69vn2Ldj+BH1rrWNr1FdTLv54n2/fg+cQWcL3PzRvrtmmLGUwjc7gC1idtCst7uw9kKVM0lOe7Y5BJHaLVeoQzXJ8AzXuMvWt6InZNkvsGFiAJGPqspMGWsnVGhpuNscvEaaC3zrZ9vImyCeis7QeZDHO94NZk8Hr+d+Z73Cu8LQoFYZsAdRUEPPRN544c2Oxj0ZZs7tUz43zXwjI/f/9JPKSBfDCKLwLEAABANQ1mMHmwFMGcSsFaeMkHJMHQlAgMBAAECggEAAhIlVv+jVKD1BcVmQx+YpaayosgXA5z16/ZFsnk89EZxBnQ5cLfVSMkQCeV7gor4EPpJ5P6W+Ymc2RxSo3mpf4zoG9YiBgX2ZUmMcafomcz7Vx2nhvhnmt87G8IzB5r6C3jNBxzevs+NGlfx/eQ4B23r2fvAmF7ea00WE8C4A+DNuR2egNLa+EdZspli5mEtnKCMtcG54NkFTj2j0yO0SJOn2uIbqiw3DoqfgSaeJxMfU5b9d56cdwND0cGNWrxk9dITiSq6Zc21DYknZXmtjXukPrEbWPGgFkjLt5+Jo1oXckzBbWQ/CL8lW6QwDuMXNMXVAfVEDIEgRcxjaXU3AQKBgQDiuHgdHcY82+VTugRjlW1UlJ5+VVKnKoKV5GuApcvnsW3ZUr8SIuxZoGRADO3nusODg3LhIsEsPzTVwbDt6xSaXPqS61SSR/HjxIZD8RDuSeHtvkCt13tckTWIhYdEjhb3fMne8L7WHGJa8O2CSKBC64adDk/KySX67dF92OxPEQKBgQDgC3hjSvuItWXU7mE738G1n0LW6gWaPHibqSaQUV1x5PX15N4MvVaFJnEOmi41ZRGyk2HM+5nSLmsZYoHp0+p3yBeEaroDt1hInbl0udL2DlWHKConAo1jtq1rY9Bsq9XXrl3cUrps/8TYwiShk41YjL4Q6gzFivjZ2I05hD371QKBgQC5quQCxC1iDZrCdGW/v9FnIMajIvCrIW8LnaJEGoLf3Tfeb5s2GQ+BXo56vZve193hR7a+lJ2pxKFaJGLmlEutFlPGGZ6KpQx8wKZL4ZFB85NoBRQmyX6nEevLP77E76/zQWh4gKNn6JrLat62gQ9tfkAhQmUp5oyJ8FRNQWZUYQKBgDDELmMmehOqsEylyoJW1PosfUb8T1XgHbx8GAnHvBhDZwor0+1f9QoscOVlx/MVWcHN9LbCeRvXwLYYzABSgTGrWvsWpACVEuFTe3+dxv6J5jHyGyK8mnv+0kaSxlYxHO3CZWnElBGPppAryf9ld5mzoNdbqoYBFuOMEElZsIg1AoGAddAhKtlfrFop/a1C+LfxOIit7Pb5XzBKv9eN1f+bSk8MChASUq7NyV6A8VU718CSBixyHV4EBFQeKUBKOPVFGgJuWO1yuU296GG6/LwH4b+tHvDLtUjdH19Yr9xCWh6pqT/hsbB1ZOqxaW8mHPKQ7rYamhmOYOOPtuInDb8Ohn8=
+  alipay-public-key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAltv1MjRR6CWx+HqFD4rmh1cKiNt59kJaKZFp79oPBJm7HBn9AXmaSydKI/aIybD6YuqjY4ltsg3i1p1fmbcT/vhTnjzJWiGYHfXCc4iaQpl3foaQNohFzJ4lb80eQ035+ObDblPqQvE7vCLeQBA42i6ua20xG/+t76U+0MOo0JCFpi2MkS/xiHwhktQmoVp1Dfl9eIB3V2JZQBtIOiz5fscZkYoaudVCREr7KlCvam++xzr1G3cM87b11DRUT0hT3owkWD9FUjs73OdF5nVNqRgpwG5FlK/4BDv1FgSOBbZ0AnI/XCZyWpj2gPv2DlZreqzPCwzuxseM3t+u2yL6ZQIDAQAB
+#  notify-url: https://baidu.com
+#  return-url: https://baidu.com
+  notify-url: http://8.140.239.220:5000/api/pay/notify
+  return-url: http://8.140.239.220:8080
