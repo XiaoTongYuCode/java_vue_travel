@@ -56,7 +56,7 @@ export default {
                 type: 'success'
               });
               sessionStorage.setItem("User",JSON.stringify(res.data.user));
-              this.$router.replace("/home");
+              this.$router.replace("/NoticePage");
 
             }else {
               this.$message({

@@ -57,4 +57,6 @@ public class OrderForm implements Serializable {
 
     @TableId(value = "pid", type = IdType.AUTO)
     private Integer pid;
+    private Integer num;
+    private String date;
 }

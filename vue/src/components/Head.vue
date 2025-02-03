@@ -42,17 +42,21 @@ export default {
     </div>
     <el-menu router mode="horizontal"
              background-color="#b2ceee" text-color="black" >
-      <el-menu-item index="/home">
+      <el-menu-item index="/NoticePage">
         <i class="el-icon-s-home"></i>
-        <span slot="title">景区</span>
+        <span slot="title">公告</span>
+      </el-menu-item>
+      <el-menu-item index="/home">
+        <i class="el-icon-sunset"></i>
+        <span slot="title">景点信息</span>
       </el-menu-item>
       <el-menu-item index="/line">
         <i class="el-icon-share"></i>
-        <span slot="title">路线</span>
+        <span slot="title">景点攻略</span>
       </el-menu-item>
       <el-menu-item index="/hotel">
         <i class="el-icon-office-building"></i>
-        <span slot="title">房源</span>
+        <span slot="title">房源推荐</span>
       </el-menu-item>
       <el-menu-item index="/userHome" >
         <i class="el-icon-user-solid"></i>
@@ -77,19 +81,19 @@ export default {
         </el-menu-item>
         <el-menu-item index="/LineControl">
           <i class="el-icon-share"></i>
-          <span slot="title">路线管理</span>
+          <span slot="title">景点攻略管理</span>
         </el-menu-item>
         <el-menu-item index="/ScenicControl">
           <i class="el-icon-tickets"></i>
-          <span slot="title">景区管理</span>
+          <span slot="title">景点信息管理</span>
         </el-menu-item>
         <el-menu-item index="/hotelControl">
           <i class="el-icon-office-building"></i>
-          <span slot="title">景区房源管理</span>
+          <span slot="title">房源推荐管理</span>
         </el-menu-item>
         <el-menu-item index="/commentControl" >
           <i class="el-icon-chat-line-square"></i>
-          <span slot="title">景区评论管理</span>
+          <span slot="title">景点评论管理</span>
         </el-menu-item>
       </el-submenu>
 

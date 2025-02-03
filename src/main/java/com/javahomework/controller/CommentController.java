@@ -82,9 +82,10 @@ public class CommentController {
             map.put("name", comment.getName());
             map.put("txt", comment.getTxt());
             map.put("time", comment.getTime());
+            map.put("type", comment.getType());
 
-            map.put("scenicId", scenic.getId());
-            map.put("scenicName", scenic.getName());
+            map.put("scenicId", scenic == null? "-" : scenic.getId());
+            map.put("scenicName", scenic == null? "-" : scenic.getName());
 
             res.add(map);
         }

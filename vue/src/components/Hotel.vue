@@ -104,7 +104,7 @@ export default {
         </div>
         <div style="position: absolute; width: 100%; bottom: 5px;display: flex; justify-content: space-between;">
           <div style="display: flex;align-items: end;margin-left: 10px;">
-            {{item.tickets}}/晚
+            均价{{item.tickets}}/晚
           </div>
           <div style="margin-right: 10px;display: flex;align-items: center;justify-content: end;">
             <i class="el-icon-location-information"></i>

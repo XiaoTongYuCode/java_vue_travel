@@ -11,6 +11,11 @@ const routes =[
         component:()=>import('../components/IndexPage.vue'),
         children:[
             {
+                path:'/NoticePage',
+                name:'NoticePage',
+                component:()=>import('../components/NoticePage.vue')
+            },
+            {
                 path:'/home',
                 name:'home',
                 component:()=>import('../components/Home.vue')

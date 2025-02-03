@@ -82,6 +82,11 @@ export default {
         stripe
         style="width: 100%">
       <el-table-column
+          prop="type"
+          label="评论类型"
+          width="200">
+      </el-table-column>
+      <el-table-column
           prop="scenicName"
           label="景区名称"
           width="200">
@@ -121,6 +126,7 @@ export default {
     </el-table>
 
     <el-pagination
+        style="margin: 20px;"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :page-sizes="[5, 10, 20, 40]"

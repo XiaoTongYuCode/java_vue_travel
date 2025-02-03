@@ -78,10 +78,25 @@ export default {
       </el-table-column>
 
       <el-table-column
+          prop="num"
+          label="数量">
+        <template slot-scope="scope">
+          {{ scope.row.num?scope.row.num:1 }} 张
+        </template>
+      </el-table-column>
+
+      <el-table-column
           prop="tickets"
           label="价格">
         <template slot-scope="scope">
           {{ scope.row.tickets }}元
+        </template>
+      </el-table-column>
+      <el-table-column
+          prop="date"
+          label="日期">
+        <template slot-scope="scope">
+          {{ scope.row.date?scope.row.date:'-' }}
         </template>
       </el-table-column>
 

@@ -46,6 +46,7 @@ public class Comment implements Serializable {
      * 内容
      */
     private String txt;
+    private String type;
 
     /**
      * 时间

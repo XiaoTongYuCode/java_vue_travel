@@ -39,10 +39,10 @@ export default {
       },
       addRules: {
         name: [
-          { required: true, message: '请输入景区名', trigger: 'blur' }
+          { required: true, message: '请输入景点名', trigger: 'blur' }
         ],
         type: [
-          { required: true, message: '请输入景区类别', trigger: 'blur' }
+          { required: true, message: '请输入景点类别', trigger: 'blur' }
         ],
         details: [
           { required: true, message: '请输入简介', trigger: 'blur' }
@@ -148,7 +148,7 @@ export default {
     },
 
     delScenic(id){
-      this.$confirm('此操作将删除 景区、其附属酒店、附属评论信息！确认删除？', '提示', {
+      this.$confirm('此操作将删除 景点、其附属酒店、附属评论信息！确认删除？', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
@@ -221,23 +221,23 @@ export default {
 
 <template>
   <div style="position: relative;">
-    <el-carousel :interval="4000" height="300px" style="margin-top: 10px; margin-bottom: 20px;" type="card">
-      <el-carousel-item v-for="(item, index) in srcList" :key="index"
-                        style="display: flex; justify-content: center; align-items: center;">
-        <el-image
-            :preview-src-list="srcList"
-            :src="item"
-            style="width: 550px; height: 100%;">
-        </el-image>
-      </el-carousel-item>
-    </el-carousel>
+<!--    <el-carousel :interval="4000" height="300px" style="margin-top: 10px; margin-bottom: 20px;" type="card">-->
+<!--      <el-carousel-item v-for="(item, index) in srcList" :key="index"-->
+<!--                        style="display: flex; justify-content: center; align-items: center;">-->
+<!--        <el-image-->
+<!--            :preview-src-list="srcList"-->
+<!--            :src="item"-->
+<!--            style="width: 550px; height: 100%;">-->
+<!--        </el-image>-->
+<!--      </el-carousel-item>-->
+<!--    </el-carousel>-->
     <div style="display: flex;margin: 20px 0;display: flex;justify-content: center;">
-      <el-input v-model="scenicName" placeholder="景区名" style="width: 300px; margin: 0 10px;"></el-input>
+      <el-input v-model="scenicName" placeholder="景点名" style="width: 300px; margin: 0 10px;"></el-input>
       <el-input v-model="scenicType" placeholder="类型" style="margin-right: 10px;width: 150px;"></el-input>
       <el-button icon="el-icon-search" @click="loadData" type="primary"></el-button>
       <el-button icon="el-icon-refresh" @click="reset" type="info"></el-button>
-      <el-button icon="el-icon-upload" @click="addShow=true;" type="success" v-if="user.roleId===0">上传景区</el-button>
-      <el-button @click="TypeModShow=true;" v-if="user.roleId===0">编辑景区类型</el-button>
+      <el-button icon="el-icon-upload" @click="addShow=true;" type="success" v-if="user.roleId===0">上传景点</el-button>
+      <el-button @click="TypeModShow=true;" v-if="user.roleId===0">编辑景点类型</el-button>
     </div>
     <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
       <el-empty v-if="scenicData.length===0" description="暂 无 景 区"></el-empty>
@@ -280,10 +280,10 @@ export default {
     </div>
 
 
-    <el-dialog title="上传景区" :visible.sync="addShow" center fullscreen>
+    <el-dialog title="上传景点" :visible.sync="addShow" center fullscreen>
       <div class="addDialog">
         <el-form ref="addForm" :model="addForm" :rules="addRules" style="width:80%;" label-position="right">
-          <el-form-item label="景区类型" prop="type">
+          <el-form-item label="景点类型" prop="type">
             <el-select v-model="addForm.type" placeholder="请选择">
               <el-option
                 v-for="item in options"
@@ -293,16 +293,16 @@ export default {
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="景区名称" prop="name">
+          <el-form-item label="景点名称" prop="name">
             <el-input v-model="addForm.name" class="inputAdd"></el-input>
           </el-form-item>
-          <el-form-item label="景区简介" prop="details">
+          <el-form-item label="景点简介" prop="details">
             <el-input v-model="addForm.details" type="textarea" class="inputAdd"></el-input>
           </el-form-item>
-          <el-form-item label="景区门票(元)" prop="tickets">
+          <el-form-item label="景点门票(元)" prop="tickets">
             <el-input type="number" v-model="addForm.tickets" class="inputAdd"></el-input>
           </el-form-item>
-          <el-form-item label="景区封面">
+          <el-form-item label="景点封面">
             <el-upload
               :action="httpUrl+'/upload/'"
               :limit="1"
@@ -325,7 +325,7 @@ export default {
       </span>
     </el-dialog>
 
-    <el-dialog title="景区类型编辑" :visible.sync="TypeModShow" center>
+    <el-dialog title="景点类型编辑" :visible.sync="TypeModShow" center>
       <div style="display: flex;justify-content: center;margin-bottom: 10px;">
         <el-input v-model="newType" style="width: 50%;margin-right: 10px;" placeholder="新增类型"></el-input>
         <el-button type="success" size="small" @click="addType">新增</el-button>

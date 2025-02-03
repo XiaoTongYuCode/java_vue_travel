@@ -87,7 +87,10 @@ public class ScenicController {
             Integer id = Integer.parseInt((String) param.get("id"));
             Scenic serviceById = iScenicService.getById(id);
             List<Hotel> hotelList = iHotelService.lambdaQuery().eq(Hotel::getScenicId, id).list();
-            List<Comment> commentList = iCommentService.lambdaQuery().eq(Comment::getScenicId, id).list();
+            List<Comment> commentList = iCommentService.lambdaQuery()
+                    .eq(Comment::getType, "景区")
+                    .eq(Comment::getScenicId, id)
+                    .list();
             HashMap<String, Object> res = new HashMap<>();
             res.put("id", serviceById.getId());
             res.put("name", serviceById.getName());

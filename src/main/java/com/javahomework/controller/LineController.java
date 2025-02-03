@@ -6,8 +6,10 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.javahomework.common.QueryPageParam;
 import com.javahomework.common.Result;
+import com.javahomework.entity.Comment;
 import com.javahomework.entity.Line;
 import com.javahomework.entity.User;
+import com.javahomework.service.ICommentService;
 import com.javahomework.service.ILineService;
 import com.javahomework.service.IUserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -35,6 +37,8 @@ public class LineController {
     private ILineService ilineService;
     @Autowired
     private IUserService iUserService;
+    @Autowired
+    private ICommentService iCommentService;
 
     @Autowired
     private HttpServletRequest request;
@@ -91,6 +95,10 @@ public class LineController {
         List<Object> res = new ArrayList<>();
         for (Line line : lineList) {
             HashMap<String, Object> info = new HashMap<>();
+            List<Comment> commentList = iCommentService.lambdaQuery()
+                    .eq(Comment::getType, "攻略")
+                    .eq(Comment::getScenicId, line.getId())
+                    .list();
             info.put("id", line.getId());
             info.put("no", line.getNo());
             info.put("userName", iUserService.getById(line.getNo()).getName());
@@ -98,6 +106,7 @@ public class LineController {
             info.put("txt", line.getTxt());
             info.put("img", line.getImg());
             info.put("tickets", line.getTickets());
+            info.put("commentList", commentList);
             res.add(info);
         }
 
