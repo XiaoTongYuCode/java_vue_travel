@@ -239,7 +239,7 @@ export default {
             <i class="el-icon-delete delBtn" @click="delScenic(item.id)"></i>
           </div>
         </div>
-        <div style="margin-bottom: 50px;padding: 10px;">
+        <div style="margin-bottom: 20px;padding: 10px;">
           {{ item.txt }}
         </div>
         <el-collapse style="margin-bottom: 10px;padding: 0 10px;">
