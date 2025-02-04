@@ -6,14 +6,8 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.javahomework.common.QueryPageParam;
 import com.javahomework.common.Result;
-import com.javahomework.entity.Comment;
-import com.javahomework.entity.Hotel;
-import com.javahomework.entity.Scenic;
-import com.javahomework.entity.User;
-import com.javahomework.service.ICommentService;
-import com.javahomework.service.IHotelService;
-import com.javahomework.service.IScenicService;
-import com.javahomework.service.IScenicTypeService;
+import com.javahomework.entity.*;
+import com.javahomework.service.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -41,6 +36,8 @@ public class ScenicController {
     @Autowired
     private ICommentService iCommentService;
     @Autowired
+    private INoticeService iNoticeService;
+    @Autowired
     private IHotelService iHotelService;
 
     @Autowired
@@ -58,7 +55,7 @@ public class ScenicController {
         Scenic scenic = iScenicService.getById(id);
         String oldImagePath = scenic.getImg();
         if (oldImagePath != null) {
-            String url=System.getProperty("user.dir");//获取项目绝对路径
+            String url = System.getProperty("user.dir");//获取项目绝对路径
             oldImagePath = oldImagePath.replace(request.getRequestURL().toString().replace(request.getRequestURI(), request.getContextPath()), url);
             File oldFile = new File(oldImagePath);
             if (oldFile.exists()) {
@@ -73,6 +70,15 @@ public class ScenicController {
     //更新
     @PostMapping("/up")
     public Result update(@RequestBody Scenic scenic) {
+        Scenic old_scenic = iScenicService.getById(scenic.getId());
+        // 价格变动公告添加
+        if (!Objects.equals(old_scenic.getTickets(), scenic.getTickets())) {
+            Notice notice = new Notice();
+            notice.setTitle("景区价格变动");
+            notice.setTxt("景区【"+scenic.getName()+"】门票现已调整为 "+scenic.getTickets()+" 元/张");
+            iNoticeService.save(notice);
+        }
+
         return iScenicService.updateById(scenic) ? Result.suc() : Result.fail();
     }
 
@@ -83,7 +89,7 @@ public class ScenicController {
         HashMap param = query.getParam();
         String name = (String) param.get("name");
         String type = (String) param.get("type");
-        if (param.get("id") != null){
+        if (param.get("id") != null) {
             Integer id = Integer.parseInt((String) param.get("id"));
             Scenic serviceById = iScenicService.getById(id);
             List<Hotel> hotelList = iHotelService.lambdaQuery().eq(Hotel::getScenicId, id).list();
@@ -121,7 +127,7 @@ public class ScenicController {
 
         HashMap<Object, Object> res = new HashMap<>();
         res.put("scenic", result.getRecords());
-        res.put("type",iScenicTypeService.list());
+        res.put("type", iScenicTypeService.list());
 
         return Result.suc(res, result.getTotal());
     }

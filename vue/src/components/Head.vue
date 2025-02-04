@@ -97,10 +97,10 @@ export default {
         </el-menu-item>
       </el-submenu>
 
-      <el-menu-item @click="logOff">
-        <i class="el-icon-switch-button"></i>
-        <span slot="title">退出</span>
-      </el-menu-item>
+<!--      <el-menu-item @click="logOff">-->
+<!--        <i class="el-icon-switch-button"></i>-->
+<!--        <span slot="title">退出</span>-->
+<!--      </el-menu-item>-->
       <div style="display: flex; align-items: center;">
         <el-avatar shape="square" :size="35" style="margin: 0 10px;background-color: #cc9c7a;">
           {{ user.name ? user.name.charAt(0) : user.no.charAt(0)}}
